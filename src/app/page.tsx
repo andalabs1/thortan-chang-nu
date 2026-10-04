@@ -1,0 +1,94 @@
+import Image from "next/image";
+import Link from "next/link";
+import { HiArrowUpRight, HiChevronRight, HiOutlineClock, HiOutlineShieldCheck, HiOutlineSparkles } from "react-icons/hi2";
+import { Faq } from "@/components/Faq";
+import { ArticleCard } from "@/components/ArticleCard";
+import { ServiceCard } from "@/components/ServiceCard";
+import { ARTICLES } from "@/lib/articles";
+import { absoluteUrl, serializeJsonLd } from "@/lib/seo";
+import { AREAS, SERVICES, SITE } from "@/lib/site";
+
+const benefits = [
+  { icon: HiOutlineClock, title: "พร้อมช่วย 24 ชม.", text: "โทรปรึกษาและนัดหมายได้ทุกวัน ไม่มีวันหยุด" },
+  { icon: HiOutlineSparkles, title: "แก้ตรงจุด", text: "ใช้เครื่องงูเหล็กไฟฟ้า เข้าถึงจุดอุดตันโดยไม่ต้องทุบ" },
+  { icon: HiOutlineShieldCheck, title: "รับประกัน 45 วัน", text: "ปัญหาซ้ำจุดเดิม กลับไปแก้ให้ตามเงื่อนไขงาน" },
+];
+
+const websiteLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": absoluteUrl("/#website"),
+  name: SITE.name,
+  alternateName: SITE.brandAlt,
+  url: absoluteUrl("/"),
+  publisher: { "@id": absoluteUrl("/#business") },
+};
+
+export default function Home() {
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(websiteLd) }} />
+      <section className="relative isolate h-[min(100svh,500px)] max-h-[500px] w-full overflow-hidden bg-brand-900 text-white">
+          <Image src="/images/legacy/legacy-43.jpg" alt="" fill className="z-0 object-cover object-center" priority sizes="100vw" />
+          <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#102624]/95 via-[#172626]/85 to-[#7b3c22]/60" />
+          <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#102624]/70 via-transparent to-[#102624]/15" />
+          <div className="pointer-events-none absolute bottom-0 right-[-7%] z-20 h-[270px] w-[65%] opacity-50 sm:h-[390px] sm:w-[55%] sm:opacity-80 lg:right-[4%] lg:h-full lg:w-[43%] lg:max-w-[600px] lg:opacity-100">
+            <Image src="/images/hero-technician.webp" alt="ภาพประกอบช่างบริการแก้ท่อตัน" fill className="object-contain object-bottom drop-shadow-[0_20px_40px_rgba(0,0,0,0.4)]" priority sizes="(max-width: 640px) 65vw, (max-width: 1024px) 55vw, 43vw" />
+          </div>
+          <div className="section-wrap relative z-30 flex h-full flex-col justify-center py-6 sm:py-10">
+            <div className="max-w-[610px] lg:max-w-[58%]">
+            <p className="text-[11px] font-bold tracking-[0.16em] text-[#ffad7f] sm:text-xs">THOTAN CITY · BURIRAM · 24 HOURS</p>
+            <h1 className="mt-3 max-w-xl text-[clamp(2.4rem,5vw,4rem)] font-extrabold leading-[1.13] tracking-tight sm:mt-4">ปัญหาท่อตัน<br /><span className="bg-gradient-to-b from-[#ffe0a8] via-[#ff9b61] to-[#ed6429] bg-clip-text text-transparent">ให้ช่างนุจัดการ</span></h1>
+            <p className="mt-4 max-w-lg text-sm leading-6 text-white/90 sm:text-base sm:leading-7"><span className="sm:hidden">ทะลวงท่อตัน ส้วมตัน และลอกท่อในบุรีรัมย์ แก้ตรงจุดโดยไม่ต้องทุบ ปรึกษาช่างได้ 24 ชั่วโมง</span><span className="hidden sm:inline">บริการทะลวงท่อตัน ส้วมตัน และลอกท่อในบุรีรัมย์ ใช้เครื่องมือเหมาะกับหน้างาน แก้ตรงจุดโดยไม่ต้องทุบ พร้อมให้คำปรึกษาตลอด 24 ชั่วโมง</span></p>
+            <div className="mt-5 flex flex-wrap gap-2 sm:mt-6 sm:gap-3">
+              <a href={SITE.phones[0].href} className="btn-primary !bg-white !px-4 !py-2.5 !text-sm !text-brand-900 hover:!bg-brand-50 sm:!px-6 sm:!py-3 sm:!text-base">โทร {SITE.phones[0].label}<HiChevronRight aria-hidden="true" className="text-lg" /></a>
+              <Link href="/services" className="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 text-sm font-extrabold text-[#ffad7f] transition hover:text-[#ffd4bc] hover:underline focus-visible:rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:text-base"><span>ดูบริการ<span className="hidden sm:inline">ทั้งหมด</span></span><HiArrowUpRight aria-hidden="true" /></Link>
+            </div>
+            <div className="mt-6 hidden max-w-lg flex-wrap gap-x-6 gap-y-2 border-t border-white/25 pt-4 text-sm font-semibold text-white/85 sm:flex">
+              <span>เปิดทุกวัน 24 ชม.</span><span>ไม่ต้องทุบพื้น</span><span>ประกัน {SITE.guaranteeDays} วัน</span>
+            </div>
+            </div>
+          </div>
+      </section>
+
+      <section className="bg-white py-20 md:py-24">
+        <div className="section-wrap">
+          <div className="flex flex-wrap items-end justify-between gap-4"><div><p className="eyebrow">OUR SERVICES</p><h2 className="section-title mt-3">บริการของเรา</h2><p className="body-copy mt-3">ดูแลตั้งแต่ท่อในบ้านจนถึงท่อเมนและบ่อบำบัด</p></div><Link href="/services" className="inline-flex items-center gap-1 font-bold text-brand-600 hover:underline">ดูบริการทั้งหมด <HiChevronRight aria-hidden="true" /></Link></div>
+          <div className="mt-9 grid gap-5 md:grid-cols-2">
+            {SERVICES.map((service) => <ServiceCard key={service.slug} service={service} headingLevel="h3" />)}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-wrap grid gap-12 py-20 md:grid-cols-[0.9fr_1.1fr] md:items-center md:py-28">
+        <div className="relative h-[390px] overflow-hidden rounded-[2rem] md:h-[500px]"><Image src="/images/legacy/legacy-43.jpg" alt="ทีมช่างกำลังแก้ไขระบบท่อหน้างาน" fill className="object-cover" sizes="(max-width: 768px) 100vw, 45vw" /></div>
+        <div><p className="eyebrow">WHY CHOOSE US</p><h2 className="section-title mt-3">งานท่อที่ไว้ใจได้<br />เริ่มจากการแก้ให้ตรงจุด</h2><p className="body-copy mt-6">เราดูอาการและหน้างานก่อนเลือกวิธีแก้ ใช้อุปกรณ์ที่เหมาะสม ตรวจการไหลหลังทำงาน และอธิบายค่าใช้จ่ายให้เข้าใจก่อนเริ่ม</p><div className="mt-8 space-y-5">{benefits.map(({ icon: Icon, title, text }) => <div key={title} className="flex gap-4"><span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-brand-50 text-brand-600"><Icon aria-hidden="true" className="text-2xl" /></span><div><h3 className="font-extrabold text-brand-900">{title}</h3><p className="mt-1 text-sm leading-7 text-slate-600">{text}</p></div></div>)}</div><Link href="/about" className="mt-9 inline-flex items-center gap-1 font-bold text-brand-600 hover:underline">รู้จักเราเพิ่มเติม <HiChevronRight aria-hidden="true" /></Link></div>
+      </section>
+
+      <section className="bg-[#f2f1ec] py-20"><div className="section-wrap"><p className="eyebrow">SERVICE AREAS</p><h2 className="section-title mt-3">พื้นที่ให้บริการ</h2><div className="mt-8 grid gap-4 md:grid-cols-3">{AREAS.map((area) => <Link key={area.slug} href={`/areas/${area.slug}`} className="group flex items-start justify-between gap-4 rounded-2xl bg-white p-6 transition hover:shadow-lg"><div><h3 className="font-extrabold text-brand-900">{area.title}</h3><p className="mt-2 text-sm leading-7 text-slate-600">{area.desc}</p></div><HiChevronRight aria-hidden="true" className="mt-1 shrink-0 text-xl text-brand-600 transition group-hover:translate-x-1" /></Link>)}</div></div></section>
+
+      <section className="section-wrap py-20"><div className="flex items-end justify-between gap-4"><div><p className="eyebrow">ARTICLES</p><h2 className="section-title mt-3">บทความน่ารู้</h2></div><Link href="/articles" className="inline-flex items-center gap-1 font-bold text-brand-600">บทความทั้งหมด <HiChevronRight aria-hidden="true" /></Link></div><div className="mt-8 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3">{ARTICLES.slice(0, 3).map((article) => <ArticleCard key={article.slug} article={article} />)}</div></section>
+
+      <Faq />
+      <section className="section-wrap mt-20">
+        <div className="relative isolate overflow-hidden rounded-[2rem] text-center text-white">
+          <Image
+            src="/images/legacy/legacy-43.jpg"
+            alt=""
+            fill
+            sizes="(max-width: 1152px) 100vw, 1152px"
+            className="z-0 object-cover object-[center_45%]"
+          />
+          <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#102624]/85 via-[#172626]/70 to-[#7b3c22]/45" />
+          <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#102624]/45 to-transparent" />
+          <div className="relative z-20 px-7 py-14 md:px-16 md:py-20">
+            <p className="text-sm font-bold tracking-widest text-[#ffad7f]">WE ARE HERE TO HELP</p>
+            <h2 className="mt-3 text-3xl font-extrabold md:text-4xl">ท่อตันตอนนี้? คุยกับช่างได้เลย</h2>
+            <p className="mt-3 text-white/85">ส่งอาการเบื้องต้นหรือโทรปรึกษาได้ตลอด 24 ชั่วโมง</p>
+            <a href={SITE.phones[0].href} className="btn-primary mt-8 !bg-white !text-brand-900 hover:!bg-brand-50">โทร {SITE.phones[0].label}<HiChevronRight aria-hidden="true" /></a>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}

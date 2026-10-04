@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-[#faf9f6] text-[#202a28] antialiased;
+  font-family: "Noto Sans Thai", sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+::selection { background: #ffe0ce; color: #172626; }
+.faq-summary { list-style: none; }
+.faq-summary::-webkit-details-marker { display: none; }
+.faq-summary::marker { content: ""; }
+
+@keyframes mobile-drawer-enter {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes mobile-drawer-backdrop-enter {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .mobile-drawer-panel { animation: mobile-drawer-enter 280ms ease-out both; }
+  .mobile-drawer-backdrop { animation: mobile-drawer-backdrop-enter 280ms ease-out both; }
+}
+
+@layer components {
+  .section-wrap { @apply mx-auto max-w-6xl px-5 sm:px-6; }
+  .eyebrow { @apply text-xs font-bold uppercase tracking-[0.18em] text-brand-600; }
+  .section-title { @apply text-3xl font-extrabold leading-tight tracking-tight text-brand-900 md:text-4xl; }
+  .body-copy { @apply leading-8 text-slate-600; }
+  .card { @apply overflow-hidden rounded-3xl border border-[#e9e9e3] bg-white shadow-[0_12px_40px_-32px_rgba(23,38,38,0.5)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-30px_rgba(23,38,38,0.3)]; }
+  .btn-primary { @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand-600 px-6 py-3 font-bold text-white transition hover:bg-brand-700; }
+  .btn-outline { @apply inline-flex items-center justify-center gap-2 rounded-full border border-brand-900/20 bg-white px-6 py-3 font-bold text-brand-900 transition hover:border-brand-600 hover:text-brand-600; }
+}

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title">
+  <title id="title">ท่อตันซิตี้ — ท่อรูปตัว C</title>
+  <defs>
+    <linearGradient id="pipe" x1="21" y1="48" x2="83" y2="48" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#29B7D8"/>
+      <stop offset="0.55" stop-color="#7AD5E5"/>
+      <stop offset="1" stop-color="#E4FAFA"/>
+    </linearGradient>
+  </defs>
+  <rect width="96" height="96" rx="23" fill="#172626"/>
+  <path d="M77 24H49C35.2 24 24 35.2 24 49S35.2 74 49 74H77" fill="none" stroke="url(#pipe)" stroke-width="15" stroke-linecap="butt" stroke-linejoin="round"/>
+  <path d="M80 14v20M80 64v20" fill="none" stroke="#E4FAFA" stroke-width="6" stroke-linecap="square"/>
+</svg>

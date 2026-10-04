@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 410 96" role="img" aria-labelledby="title desc">
+  <title id="title">ท่อตัน by ช่างนุ</title>
+  <desc id="desc">สัญลักษณ์ท่อโค้งสีขาวและหยดน้ำสีส้ม คู่กับชื่อท่อตัน by ช่างนุ</desc>
+  <rect width="96" height="96" rx="24" fill="#172626"/>
+  <path d="M26 25v30c0 13 9 22 22 22s22-9 22-22V39" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M70 15c-3.5 5.1-6.5 8.5-6.5 12a6.5 6.5 0 0 0 13 0c0-3.5-3-6.9-6.5-12Z" fill="#ed6429"/>
+  <text x="115" y="47" fill="#172626" font-family="Noto Sans Thai, Tahoma, sans-serif" font-size="27" font-weight="800">ท่อตัน by ช่างนุ</text>
+  <text x="116" y="73" fill="#df5520" font-family="Noto Sans Thai, Tahoma, sans-serif" font-size="11" font-weight="700" letter-spacing="3">THOTAN CITY · BURIRAM</text>
+</svg>
