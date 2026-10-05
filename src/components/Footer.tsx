@@ -2,15 +2,18 @@ import Link from "next/link";
 import Image from "next/image";
 import { HiArrowUpRight, HiChevronRight } from "react-icons/hi2";
 import { SERVICES, SITE } from "@/lib/site";
+import { SocialLinks } from "@/components/SocialLinks";
 
 export function Footer() {
   return (
-    <footer className="mt-24 bg-brand-900 text-white">
+    <footer className=" bg-brand-900 text-white">
       <div className="section-wrap grid gap-12 py-16 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
         <div>
           <div className="flex items-center gap-4"><div className="shrink-0 rounded-2xl bg-white p-1"><Image src="/logo.png" alt="ท่อตันซิตี้" width={1275} height={1234} className="h-[74px] w-[76px] object-contain" /></div><p className="text-xl font-extrabold">ท่อตัน by ช่างนุ<span className="text-brand-500">.</span></p></div>
-          <p className="mt-4 max-w-sm text-sm leading-7 text-white/60">บริการแก้ท่อตัน ส้วมตัน และดูแลระบบท่อในบุรีรัมย์ พร้อมช่วยเหลือทุกวันตลอด 24 ชั่วโมง</p>
+          <p className="mt-4 max-w-sm text-sm leading-7 text-white/60">บริการแก้ท่อตัน ส้วมตัน และดูแลระบบท่อในกรุงเทพฯ–ปริมณฑล พร้อมช่วยเหลือทุกวันตลอด 24 ชั่วโมง</p>
           <a href={SITE.phones[0].href} className="mt-6 inline-flex items-center gap-2 text-xl font-bold text-white hover:text-brand-400">{SITE.phones[0].label}<HiArrowUpRight aria-hidden="true" /></a>
+          <p className="mt-6 text-sm font-bold text-white/80">ติดตามและติดต่อช่างนุ</p>
+          <div className="mt-3"><SocialLinks variant="dark" /></div>
         </div>
         <div>
           <p className="font-bold">สำรวจเว็บ</p>

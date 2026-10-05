@@ -16,8 +16,8 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   if (!s) return {};
   return pageMetadata({
     path: `/services/${s.slug}`,
-    title: `${s.title} บุรีรัมย์ 24 ชม.`,
-    description: `${s.title} ในบุรีรัมย์–นางรอง ${s.short} ${s.price} ประกัน 45 วัน โทร 082-991-9434`,
+    title: `${s.title} กรุงเทพฯ–ปริมณฑล 24 ชม.`,
+    description: `${s.title} ในกรุงเทพฯ–ปริมณฑล ${s.short} ${s.price} ประกัน 45 วัน โทร 082-991-9434`,
     image: s.image,
     imageAlt: `${s.title} โดยทีมช่างนุ`,
   });
@@ -31,21 +31,28 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
     "@context": "https://schema.org",
     "@type": "Service",
     "@id": absoluteUrl(`/services/${s.slug}#service`),
-    name: `${s.title} บุรีรัมย์`,
+    name: `${s.title} กรุงเทพฯ–ปริมณฑล`,
     description: s.short,
     url: absoluteUrl(`/services/${s.slug}`),
     provider: { "@id": absoluteUrl("/#business") },
-    areaServed: { "@type": "AdministrativeArea", name: "จังหวัดบุรีรัมย์" },
+    areaServed: [
+      { "@type": "AdministrativeArea", name: "กรุงเทพมหานคร" },
+      { "@type": "AdministrativeArea", name: "จังหวัดนนทบุรี" },
+      { "@type": "AdministrativeArea", name: "จังหวัดปทุมธานี" },
+      { "@type": "AdministrativeArea", name: "จังหวัดสมุทรปราการ" },
+      { "@type": "AdministrativeArea", name: "จังหวัดนครปฐม" },
+      { "@type": "AdministrativeArea", name: "จังหวัดสมุทรสาคร" },
+    ],
   };
   return (
     <div className="mx-auto max-w-4xl px-4 py-10">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(ld) }} />
       <h1 className="text-3xl font-extrabold">
-        {s.title} บุรีรัมย์ — {s.price}
+        {s.title} กรุงเทพฯ–ปริมณฑล — {s.price}
       </h1>
       <p className="mt-2 text-slate-500">{s.short} · ช่างพร้อมออก 24 ชม. ประกัน {SITE.guaranteeDays} วัน</p>
       <div className="relative mt-6 h-72 overflow-hidden rounded-2xl">
-        <Image src={s.image} alt={`${s.title} บุรีรัมย์`} fill className="object-cover" />
+        <Image src={s.image} alt={`${s.title} กรุงเทพฯ–ปริมณฑล`} fill className="object-cover" />
       </div>
       <div className="mt-6 rounded-2xl border bg-white p-5">
         <h2 className="font-extrabold">อาการที่รับแก้</h2>

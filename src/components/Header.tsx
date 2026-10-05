@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { HiChevronRight, HiOutlinePhone } from "react-icons/hi2";
 import { MobileNav } from "@/components/MobileNav";
+import { ServicesDropdown } from "@/components/ServicesDropdown";
 import { SITE } from "@/lib/site";
 
 const links = [
@@ -21,7 +22,9 @@ export function Header() {
           <Image src="/logo.png" alt="ท่อตันซิตี้" width={1275} height={1234} className="h-[68px] w-[70px] object-contain sm:h-[76px] sm:w-[79px]" priority />
         </Link>
         <nav aria-label="เมนูหลัก" className="hidden items-center gap-6 lg:flex">
-          {links.map((link) => <Link key={link.href} href={link.href} className="text-sm font-semibold text-brand-900/75 transition hover:text-brand-600">{link.label}</Link>)}
+          {links.map((link) => link.href === "/services"
+            ? <ServicesDropdown key={link.href} />
+            : <Link key={link.href} href={link.href} className="text-sm font-semibold text-brand-900/75 transition hover:text-brand-600">{link.label}</Link>)}
         </nav>
         <div className="hidden items-center gap-3 lg:flex">
           <span className="text-right text-xs text-slate-500">พร้อมให้บริการ<br /><b className="text-brand-900">ทุกวัน 24 ชั่วโมง</b></span>
