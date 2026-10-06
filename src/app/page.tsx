@@ -39,7 +39,7 @@ export default function Home() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(websiteLd) }} />
       <section className="relative isolate h-[min(100svh,500px)] max-h-[500px] w-full overflow-hidden bg-brand-900 text-white">
-          <Image src="/images/legacy/legacy-50.jpeg" alt="" fill className="z-0 object-cover object-center" priority sizes="100vw" />
+          <Image src="/images/legacy/legacy-43.jpg" alt="" fill className="z-0 object-cover object-center" priority sizes="100vw" />
           <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#102624]/95 via-[#172626]/85 to-[#7b3c22]/60" />
           <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#102624]/70 via-transparent to-[#102624]/15" />
           <div className="pointer-events-none absolute bottom-0 right-[-7%] z-20 h-[270px] w-[65%] opacity-50 sm:h-[390px] sm:w-[55%] sm:opacity-80 lg:right-[4%] lg:h-full lg:w-[43%] lg:max-w-[600px] lg:opacity-100">
