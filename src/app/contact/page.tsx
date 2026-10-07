@@ -39,19 +39,62 @@ const HELP_TOPICS = [
   },
 ];
 
+const SHOW_CALLBACK_FORM = false;
+
 export default function Contact() {
   return (
     <>
-      {/* ── 1. Hero + ฟอร์ม ─────────────────────────────── */}
-      <section className="relative overflow-hidden bg-[#f6f0e8]">
-        <div className="pointer-events-none absolute -right-28 -top-48 h-[36rem] w-[36rem] rounded-full bg-[#fbe0cc]/50 blur-3xl" />
-        <div className="section-wrap relative grid gap-12 py-14 md:grid-cols-[1.1fr_0.9fr] md:items-center md:gap-16 md:py-24 lg:py-28">
-          <div className="max-w-[570px]">
-            <p className="eyebrow">CONTACT US · 24 HOURS</p>
-            <h1 className="mt-4 text-[clamp(2.6rem,5vw,4.7rem)] font-extrabold leading-[1.12] tracking-tight text-brand-900">ติดต่อ<span className="text-brand-600">ช่างนุ</span></h1>
+      {/* ── 1. Hero ─────────────────────────────────────── */}
+      <section className="relative isolate overflow-hidden bg-[#c96d3e] text-white">
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#e89a67] via-[#c96d3e] to-[#ad542f]" />
+        <svg aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-28 w-full text-[#faf9f6] sm:h-36 lg:h-44" viewBox="0 0 1440 180" preserveAspectRatio="none">
+          <path fill="currentColor" d="M0 0h1440v50c-130 58-218 13-332 16-126 4-156 91-292 64-117-24-160-98-283-97-123 1-237 73-371 72C94 104 37 87 0 65V0Z" />
+        </svg>
+        <div aria-hidden="true" className="pointer-events-none absolute -bottom-40 -left-20 h-[25rem] w-[25rem] rounded-full bg-[#f7bc80]/35 blur-3xl" />
+        <div aria-hidden="true" className="pointer-events-none absolute right-[8%] top-[26%] h-48 w-48 rotate-12 rounded-[36%_64%_58%_42%/52%_38%_62%_48%] bg-[#f3ae70]/65 sm:h-72 sm:w-72" />
+        <div aria-hidden="true" className="pointer-events-none absolute left-[49%] top-[34%] h-24 w-24 -rotate-12 rounded-[36%_64%_58%_42%/52%_38%_62%_48%] bg-[#f8c68e]/65 sm:h-36 sm:w-36" />
+
+        <div className="section-wrap relative min-h-[690px] sm:min-h-[620px] lg:min-h-[740px] xl:min-h-[760px]">
+          <div className="relative z-10 max-w-[660px] pt-40 sm:pt-44 lg:pt-48">
+            <p className="text-xs font-extrabold tracking-[0.24em] text-brand-900/90">CONTACT US · 24 HOURS</p>
+            <h1 className="mt-5 text-[clamp(3.8rem,7vw,6rem)] font-extrabold leading-[1.02] tracking-[-0.055em] text-white drop-shadow-[0_3px_3px_rgba(35,92,108,0.13)]">
+              ติดต่อช่างนุ
+            </h1>
+            <p className="mt-5 max-w-[400px] text-lg font-bold leading-8 text-white drop-shadow-[0_1px_2px_rgba(20,70,85,0.2)] sm:text-xl">
+              ท่อตัน ส้วมตัน น้ำเอ่อ โทรหาเราได้เลย
+            </p>
+            <p className="mt-2 max-w-[260px] text-sm leading-7 text-white/95 drop-shadow-[0_1px_2px_rgba(80,35,22,0.25)] sm:max-w-[390px] sm:text-base">
+              ช่วยประเมินอาการและนัดช่างในกรุงเทพฯ–ปริมณฑล ตลอด 24 ชั่วโมง
+            </p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <a href={SITE.phones[0].href} className="inline-flex items-center gap-2 rounded-full bg-brand-900 px-6 py-3 text-sm font-extrabold text-white shadow-lg shadow-brand-900/15 transition hover:bg-brand-700">
+                <HiOutlinePhone aria-hidden="true" className="text-lg" /> โทรหาช่างทันที
+              </a>
+              <a href="#contact-options" className="inline-flex items-center gap-2 rounded-full border border-white/90 bg-white/85 px-6 py-3 text-sm font-extrabold text-brand-900 backdrop-blur-sm transition hover:bg-white">
+                ดูช่องทางติดต่อ <HiChevronRight aria-hidden="true" />
+              </a>
+            </div>
+          </div>
+          <Image
+            src="/images/contact-hero-technician.webp"
+            alt="ภาพประกอบช่างบริการยิ้มและยกนิ้วให้"
+            width={1297}
+            height={1212}
+            priority
+            sizes="(max-width: 640px) 72vw, (max-width: 1024px) 54vw, 560px"
+            className="pointer-events-none absolute bottom-0 right-[-75px] z-0 w-[330px] max-w-none sm:right-[-15px] sm:w-[450px] lg:right-[-15px] lg:w-[610px] xl:w-[650px]"
+          />
+        </div>
+      </section>
+
+      {/* ── 2. ช่องทางติดต่อ ────────────────────────────── */}
+      <section id="contact-options" className="scroll-mt-20 bg-[#f6f0e8]">
+        <div className={`section-wrap grid gap-12 py-16 md:gap-16 md:py-24 ${SHOW_CALLBACK_FORM ? "md:grid-cols-[1.1fr_0.9fr] md:items-start" : ""}`}>
+          <div className={SHOW_CALLBACK_FORM ? "max-w-[570px]" : "mx-auto w-full max-w-[900px]"}>
+            <p className="eyebrow">GET IN TOUCH</p>
+            <h2 className="section-title mt-3">สะดวกช่องทางไหน<br />เลือกได้เลย</h2>
             <p className="mt-5 max-w-[500px] text-base leading-8 text-slate-600">
-              โทร ทักแชต หรือฝากเบอร์ไว้ได้เลย ช่างพร้อมช่วยประเมินอาการและนัดหมาย
-              ตลอด 24 ชั่วโมง ในกรุงเทพฯ–ปริมณฑล
+              โทรหรือส่งอีเมลได้เลย ช่างพร้อมช่วยประเมินอาการและนัดหมายตลอด 24 ชั่วโมง
             </p>
             <ul className="mt-7 space-y-2.5 text-sm">
               {SITE.phones.map((p) => (
@@ -67,7 +110,7 @@ export default function Contact() {
                 </a>
               </li>
             </ul>
-            <div className="mt-12 grid gap-5 border-t border-brand-900/15 pt-7 sm:grid-cols-3 md:mt-16 md:gap-4">
+            <div className="mt-12 grid gap-5 border-t border-brand-900/15 pt-7 sm:grid-cols-3 md:gap-4">
               {HELP_TOPICS.map(({ icon: Icon, title, text }) => (
                 <div key={title}>
                   <Icon aria-hidden="true" className="mb-2 text-2xl text-brand-600" />
@@ -77,15 +120,17 @@ export default function Contact() {
               ))}
             </div>
           </div>
-          <div className="w-full max-w-[490px] justify-self-center rounded-[1.25rem] border border-[#f1e6dd] bg-white p-6 shadow-[0_24px_65px_-30px_rgba(23,38,38,0.23)] sm:p-8 md:justify-self-end">
-            <h2 className="text-2xl font-extrabold tracking-tight text-brand-900">ฝากเบอร์ให้ช่างติดต่อกลับ</h2>
-            <p className="mt-1 text-sm text-slate-500">แจ้งอาการคร่าว ๆ แล้วช่างจะติดต่อกลับโดยเร็ว</p>
-            <div className="mt-6"><CallbackForm /></div>
-          </div>
+          {SHOW_CALLBACK_FORM && (
+            <div className="w-full max-w-[490px] justify-self-center rounded-[1.25rem] border border-[#f1e6dd] bg-white p-6 shadow-[0_24px_65px_-30px_rgba(23,38,38,0.23)] sm:p-8 md:justify-self-end">
+              <h2 className="text-2xl font-extrabold tracking-tight text-brand-900">ฝากเบอร์ให้ช่างติดต่อกลับ</h2>
+              <p className="mt-1 text-sm text-slate-500">แจ้งอาการคร่าว ๆ แล้วช่างจะติดต่อกลับโดยเร็ว</p>
+              <div className="mt-6"><CallbackForm /></div>
+            </div>
+          )}
         </div>
       </section>
 
-      {/* ── 2. แผนที่ + ที่ตั้ง ─────────────────────────── */}
+      {/* ── 3. แผนที่ + ที่ตั้ง ─────────────────────────── */}
       <section className="bg-white">
         <div className="section-wrap grid gap-10 py-16 md:grid-cols-[1.05fr_0.95fr] md:items-center md:gap-16 md:py-24">
           <div className="relative overflow-hidden rounded-xl border border-[#e9e9e3] bg-[#f4f2ec]">
@@ -118,7 +163,7 @@ export default function Contact() {
             <p className="eyebrow">OUR LOCATION</p>
             <h2 className="section-title mt-3">อยู่ใกล้ พร้อมไปถึงหน้างาน</h2>
             <p className="mt-4 text-sm leading-7 text-slate-600">ฐานงานอยู่บางบัวทอง จังหวัดนนทบุรี รับงานในกรุงเทพฯ และปริมณฑล โทรเช็กคิวหรือสอบถามเส้นทางได้ตลอดเวลา</p>
-            <div className="mt-8 border-l-2 border-brand-600 pl-5">
+            <div className="mt-8">
               <p className="font-extrabold text-brand-900">สำนักงาน / จุดรับงาน</p>
               <p className="mt-2 text-sm leading-7 text-slate-600">{SITE.address}</p>
               <p className="mt-2 text-sm leading-7 text-slate-600">{SITE.hours}</p>
@@ -130,7 +175,7 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* ── 3. FAQ ─────────────────────────────────────── */}
+      {/* ── 4. FAQ ─────────────────────────────────────── */}
       <section className="bg-[#faf9f6]">
         <div className="section-wrap grid gap-10 py-16 md:grid-cols-[0.8fr_1.2fr] md:gap-20 md:py-24">
         <div className="max-w-[360px]">
@@ -155,7 +200,7 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* ── 4. CTA ท้ายหน้า ────────────────────────────── */}
+      {/* ── 5. CTA ท้ายหน้า ────────────────────────────── */}
       <section className="relative isolate overflow-hidden bg-brand-900 text-center text-white">
           <Image
             src="/images/legacy/legacy-43.jpg"
