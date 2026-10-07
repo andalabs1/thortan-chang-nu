@@ -319,7 +319,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
                 <p className="text-xs font-bold tracking-[0.18em] text-[#ffad7f]">NEED A PLUMBER?</p>
                 <p className="mt-2 text-lg font-extrabold leading-8">ท่อตันตอนนี้? ช่างพร้อมออก</p>
                 <p className="mt-2 text-sm leading-7 text-white/75">
-                  เริ่ม 1,700 บาท/จุด · ประกัน {SITE.guaranteeDays} วัน · ไม่จบไม่คิดเงิน
+                  เริ่ม 1,500 บาท/จุด · ประกัน {SITE.guaranteeDays} วัน · ไม่จบไม่คิดเงิน
                 </p>
                 <a href={SITE.phones[0].href} className="btn-primary mt-5 w-full !bg-white !text-brand-900 hover:!bg-brand-50">
                   <HiOutlinePhone aria-hidden="true" className="text-lg" />

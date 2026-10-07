@@ -47,7 +47,7 @@ const localBusinessLd = {
   hasMap: "https://www.google.com/maps?q=13.904234,100.346055",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "47/922 บ้านร่มเงานไม้ ต.บางคูรัด",
+    streetAddress: "47/922 บ้านร่มเงาไม้ ต.บางคูรัด",
     addressLocality: "อ.บางบัวทอง",
     addressRegion: "จ.นนทบุรี",
     postalCode: "11110",
