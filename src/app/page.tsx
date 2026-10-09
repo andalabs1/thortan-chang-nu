@@ -4,6 +4,7 @@ import { HiArrowUpRight, HiChevronRight, HiOutlineClock, HiOutlineShieldCheck, H
 import { Faq } from "@/components/Faq";
 import { ArticleCard } from "@/components/ArticleCard";
 import { ExpandingContactCta } from "@/components/ExpandingContactCta";
+import { HeroTechnician } from "@/components/HeroTechnician";
 import { ServiceCard } from "@/components/ServiceCard";
 import { ARTICLES } from "@/lib/articles";
 import { absoluteUrl, serializeJsonLd } from "@/lib/seo";
@@ -42,9 +43,7 @@ export default function Home() {
           <Image src="/images/legacy/legacy-43.jpg" alt="" fill className="z-0 object-cover object-center" priority sizes="100vw" />
           <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#102624]/95 via-[#172626]/85 to-[#7b3c22]/60" />
           <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#102624]/70 via-transparent to-[#102624]/15" />
-          <div className="pointer-events-none absolute bottom-0 right-[-7%] z-20 h-[270px] w-[65%] opacity-50 sm:h-[390px] sm:w-[55%] sm:opacity-80 lg:right-[4%] lg:h-full lg:w-[43%] lg:max-w-[600px] lg:opacity-100">
-            <Image src="/images/hero-technician.webp" alt="ภาพประกอบช่างบริการแก้ท่อตัน" fill className="object-contain object-bottom drop-shadow-[0_20px_40px_rgba(0,0,0,0.4)]" priority sizes="(max-width: 640px) 65vw, (max-width: 1024px) 55vw, 43vw" />
-          </div>
+          <HeroTechnician />
           <div className="section-wrap relative z-30 flex h-full flex-col justify-center py-6 sm:py-10">
             <div className="max-w-[610px] lg:max-w-[58%]">
             {/* <p className="text-[11px] font-bold tracking-[0.16em] text-[#ffad7f] sm:text-xs">THOTAN CITY · BANGKOK · 24 HOURS</p> */}
@@ -104,7 +103,8 @@ export default function Home() {
           src={`https://www.google.com/maps?q=${encodeURIComponent(SITE.mapQuery)}&z=10&output=embed`}
           className="block h-[60vh] max-h-[600px] min-h-[320px] w-full border-0"
           loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
+          referrerPolicy="strict-origin-when-cross-origin"
+          // referrerPolicy="no-referrer-when-downgrade"
         />
       </section>
 

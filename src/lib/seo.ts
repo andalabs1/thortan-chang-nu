@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { SITE } from "@/lib/site";
 
-// Set NEXT_PUBLIC_SITE_URL to the live domain before deploying.
+// Canonical production domain ของ ท่อตันซิตี้ (ท่อตัน by ช่างนุ)
+// ตั้งค่า NEXT_PUBLIC_SITE_URL=https://www.thotan-city.com บน hosting ก่อน deploy
+// ถ้าใช้โดเมนภาษาไทย (IDN) ให้ชี้มาที่นี่แล้ว redirect มาที่ canonical นี้แทน
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.thotan-city.com").replace(/\/+$/, "");
 
 export function absoluteUrl(path: string) {
@@ -14,6 +16,25 @@ export function serializeJsonLd(data: unknown) {
   );
 }
 
+const DEFAULT_KEYWORDS = [
+  "ท่อตัน",
+  "ท่อตันซิตี้",
+  "ช่างท่อตัน",
+  "ทะลวงท่อตัน",
+  "ส้วมตัน",
+  "ชักโครกตัน",
+  "อ่างล้างจานตัน",
+  "ลอกท่อ",
+  "ลอกท่อเมน",
+  "ช่างนุ",
+  "ท่อตัน กรุงเทพ",
+  "ท่อตัน นนทบุรี",
+  "ท่อตัน ปทุมธานี",
+  "ท่อตัน สมุทรปราการ",
+  "ท่อตัน นครปฐม",
+  "ท่อตัน สมุทรสาคร",
+];
+
 type PageSeo = {
   path: string;
   title: string;
@@ -21,6 +42,8 @@ type PageSeo = {
   image?: string;
   imageAlt?: string;
   type?: "website" | "article";
+  keywords?: string[];
+  noIndex?: boolean;
 };
 
 export function pageMetadata({
@@ -30,6 +53,8 @@ export function pageMetadata({
   image = "/images/legacy/legacy-43.jpg",
   imageAlt = "ทีมท่อตัน by ช่างนุ กำลังทำงาน",
   type = "website",
+  keywords,
+  noIndex = false,
 }: PageSeo): Metadata {
   const url = absoluteUrl(path);
   const socialTitle = `${title} | ${SITE.name}`;
@@ -38,7 +63,23 @@ export function pageMetadata({
   return {
     title,
     description,
+    keywords: keywords ?? DEFAULT_KEYWORDS,
+    authors: [{ name: SITE.name, url: absoluteUrl("/") }],
+    creator: SITE.name,
+    publisher: SITE.name,
     alternates: { canonical: url },
+    robots: noIndex
+      ? { index: false, follow: false }
+      : {
+          index: true,
+          follow: true,
+          googleBot: {
+            index: true,
+            follow: true,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+          },
+        },
     openGraph: {
       type,
       locale: "th_TH",
@@ -46,7 +87,7 @@ export function pageMetadata({
       url,
       title: socialTitle,
       description,
-      images: [{ url: imageUrl, alt: imageAlt }],
+      images: [{ url: imageUrl, alt: imageAlt, width: 1200, height: 630 }],
     },
     twitter: {
       card: "summary_large_image",

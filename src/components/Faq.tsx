@@ -1,9 +1,22 @@
 import Link from "next/link";
 import { HiChevronDown } from "react-icons/hi2";
 import { FAQS, SITE } from "@/lib/site";
+import { serializeJsonLd } from "@/lib/seo";
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQS.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
 
 export function Faq() {
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqLd) }} />
     <section aria-labelledby="faq-heading" className="mt-20 bg-[#f2f1ec] py-16 md:mt-24 md:py-24">
       <div className="section-wrap grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:gap-16">
         <div className="">
@@ -43,5 +56,6 @@ export function Faq() {
         </div>
       </div>
     </section>
+    </>
   );
 }

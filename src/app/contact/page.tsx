@@ -139,7 +139,8 @@ export default function Contact() {
               src={`https://www.google.com/maps?q=${encodeURIComponent(SITE.mapQuery)}&output=embed`}
               className="block h-[340px] w-full border-0 sm:h-[420px]"
               loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
+              referrerPolicy="strict-origin-when-cross-origin"
+              // referrerPolicy="no-referrer-when-downgrade"
             />
             <div className="absolute bottom-4 left-4 max-w-[250px] rounded-xl border border-white/80 bg-white/95 p-4 shadow-[0_12px_35px_-16px_rgba(23,38,38,0.35)] backdrop-blur sm:bottom-auto sm:left-5 sm:top-5">
               <p className="flex items-center gap-2 text-sm font-extrabold text-brand-900">
