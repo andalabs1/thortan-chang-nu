@@ -12,6 +12,7 @@ import {
   HiOutlineWrench,
 } from "react-icons/hi2";
 import { CallbackForm } from "@/components/CallbackForm";
+import { GoogleMapsEmbed } from "@/components/GoogleMapsEmbed";
 import { FAQS, SITE } from "@/lib/site";
 import { pageMetadata } from "@/lib/seo";
 
@@ -133,15 +134,14 @@ export default function Contact() {
       {/* ── 3. แผนที่ + ที่ตั้ง ─────────────────────────── */}
       <section className="bg-white">
         <div className="section-wrap grid gap-10 py-16 md:grid-cols-[1.05fr_0.95fr] md:items-center md:gap-16 md:py-24">
-          <div className="relative overflow-hidden rounded-xl border border-[#e9e9e3] bg-[#f4f2ec]">
-            <iframe
-              title="แผนที่ที่ตั้งท่อตัน by ช่างนุ ต.บางคูรัด อ.บางบัวทอง จ.นนทบุรี"
-              src={`https://www.google.com/maps?q=${encodeURIComponent(SITE.mapQuery)}&output=embed`}
-              className="block h-[340px] w-full border-0 sm:h-[420px]"
-              loading="lazy"
-              referrerPolicy="strict-origin-when-cross-origin"
-              // referrerPolicy="no-referrer-when-downgrade"
-            />
+          <GoogleMapsEmbed
+            query={SITE.mapQuery}
+            showOpenLink={false}
+            title="แผนที่ที่ตั้งท่อตัน by ช่างนุ ต.บางคูรัด อ.บางบัวทอง จ.นนทบุรี"
+            className="relative overflow-hidden rounded-xl border border-[#e9e9e3] bg-[#f4f2ec]"
+            iframeClassName="block h-[340px] w-full border-0 sm:h-[420px]"
+            fallbackClassName="h-[340px] w-full sm:h-[420px]"
+          >
             <div className="absolute bottom-4 left-4 max-w-[250px] rounded-xl border border-white/80 bg-white/95 p-4 shadow-[0_12px_35px_-16px_rgba(23,38,38,0.35)] backdrop-blur sm:bottom-auto sm:left-5 sm:top-5">
               <p className="flex items-center gap-2 text-sm font-extrabold text-brand-900">
                 <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-600 text-white">
@@ -159,7 +159,7 @@ export default function Contact() {
                 เปิดแผนที่นำทาง <HiArrowUpRight aria-hidden="true" />
               </a>
             </div>
-          </div>
+          </GoogleMapsEmbed>
           <div className="max-w-[460px]">
             <p className="eyebrow">OUR LOCATION</p>
             <h2 className="section-title mt-3">อยู่ใกล้ พร้อมไปถึงหน้างาน</h2>

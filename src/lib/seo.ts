@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import { SITE } from "@/lib/site";
 
 // Canonical production domain ของ ท่อตันซิตี้ (ท่อตัน by ช่างนุ)
-// ตั้งค่า NEXT_PUBLIC_SITE_URL=https://www.thotan-city.com บน hosting ก่อน deploy
-// ถ้าใช้โดเมนภาษาไทย (IDN) ให้ชี้มาที่นี่แล้ว redirect มาที่ canonical นี้แทน
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.thotan-city.com").replace(/\/+$/, "");
+// ตั้งค่า NEXT_PUBLIC_SITE_URL บน hosting หากต้องการเปลี่ยนโดเมน canonical
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.xn--c3ctbfl2j3a0ak6pta.com").replace(/\/+$/, "");
 
 export function absoluteUrl(path: string) {
   return new URL(path, `${SITE_URL}/`).toString();

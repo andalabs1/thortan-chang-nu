@@ -10,8 +10,6 @@ type Entry = {
 };
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
-
   const staticPages: Entry[] = [
     { path: "/", changeFrequency: "daily", priority: 1.0 },
     { path: "/services", changeFrequency: "weekly", priority: 0.9 },
@@ -41,7 +39,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [...staticPages, ...servicePages, ...areaPages, ...articlePages].map((entry) => ({
     url: absoluteUrl(entry.path),
-    lastModified: now,
     changeFrequency: entry.changeFrequency,
     priority: entry.priority,
   }));

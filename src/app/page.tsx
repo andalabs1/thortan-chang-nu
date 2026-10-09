@@ -6,6 +6,7 @@ import { ArticleCard } from "@/components/ArticleCard";
 import { ExpandingContactCta } from "@/components/ExpandingContactCta";
 import { HeroTechnician } from "@/components/HeroTechnician";
 import { ServiceCard } from "@/components/ServiceCard";
+import { GoogleMapsEmbed } from "@/components/GoogleMapsEmbed";
 import { ARTICLES } from "@/lib/articles";
 import { absoluteUrl, serializeJsonLd } from "@/lib/seo";
 import { AREAS, SERVICES, SITE } from "@/lib/site";
@@ -98,13 +99,13 @@ export default function Home() {
       <section className="bg-[#f2f1ec] py-20"><div className="section-wrap"><p className="eyebrow">SERVICE AREAS</p><h2 className="section-title mt-3">พื้นที่ให้บริการ</h2><div className="mt-8 grid gap-4 md:grid-cols-3">{AREAS.map((area) => <Link key={area.slug} href={`/areas/${area.slug}`} className="group flex items-start justify-between gap-4 rounded-2xl bg-white p-6 transition hover:shadow-lg"><div><h3 className="font-extrabold text-brand-900">{area.title}</h3><p className="mt-2 text-sm leading-7 text-slate-600">{area.desc}</p></div><HiChevronRight aria-hidden="true" className="mt-1 shrink-0 text-xl text-brand-600 transition group-hover:translate-x-1" /></Link>)}</div></div></section>
 
       <section aria-label="แผนที่โซนรับงานกรุงเทพฯ–ปริมณฑล" className="w-full">
-        <iframe
+        <GoogleMapsEmbed
+          query={SITE.mapQuery}
+          zoom={10}
           title="แผนที่โซนรับงานกรุงเทพฯ–ปริมณฑล ท่อตัน by ช่างนุ"
-          src={`https://www.google.com/maps?q=${encodeURIComponent(SITE.mapQuery)}&z=10&output=embed`}
-          className="block h-[60vh] max-h-[600px] min-h-[320px] w-full border-0"
-          loading="lazy"
-          referrerPolicy="strict-origin-when-cross-origin"
-          // referrerPolicy="no-referrer-when-downgrade"
+          className="w-full"
+          iframeClassName="block h-[60vh] max-h-[600px] min-h-[320px] w-full border-0"
+          fallbackClassName="h-[60vh] max-h-[600px] min-h-[320px] w-full"
         />
       </section>
 
